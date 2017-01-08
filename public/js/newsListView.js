@@ -10,11 +10,11 @@
 
   NewsListView.prototype = {
     display: function() {
-      var html = ""
+      var html = "<ul>"
       for (var i = 0; i < this.newsList.stories.length; i++) {
-        html += this.newsList.getHeadline(i)
+        html += "<li>" + this.newsList.getHeadline(i) + "</li>"
       }
-      this.listElement.innerHTML = html;
+      this.listElement.innerHTML = html + "</ul>";
     }
   };
 
