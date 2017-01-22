@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Testing API</title>
+  </head>
+  <body>
+
+    <ul class="article-summary">Article summary</ul>
+
+    <script>
+      const endpoint = "http://news-summary-api.herokuapp.com/aylien?apiRequestUrl=https://api.aylien.com/api/v1/summarize?url=https://www.theguardian.com/uk-news/2017/jan/22/djodjo-nsaka-police-launch-probe-into-fatal-stabbing"
+      const articleSummary = document.querySelector(".article-summary")
+      fetch(endpoint)
+        .then(function(blob) {
+          return blob.json();
+        })
+        .then(function(data) {
+          displaySummary(data)
+        })
+
+      function displaySummary(data) {
+        var html = "";
+        var sentences = data.sentences;
+        for (var i=0; i<sentences.length; i++) {
+          html += `<li>${sentences[i]}</li>`
+        }
+        articleSummary.innerHTML = html;
+      }
+    </script>
+  </body>
+</html>
